@@ -1,7 +1,7 @@
 
 exports.up = function (knex) {
     return knex.schema.createTable('conversa', function (table) {
-        table.bigInteger('id').primary().unique();
+        table.bigIncrements('id').primary().unique();
         table.string('handle_hashed').notNullable();
         table.timestamp('started_at', { useTz: true }).notNullable();
     });

@@ -1,0 +1,22 @@
+version: "3.5"
+networks:
+    external:
+services:
+    analytics_server:
+        build: .
+        container_name: azmina-chatbot-analytics
+        environment:
+            PORT: ${PORT}
+
+            DB_HOST: ${DB_HOST}
+            DB_USER: ${DB_USER}
+            DB_PASSWORD: ${DB_PASSWORD}
+            DB_NAME: ${DB_NAME}
+            DB_PORT: ${DB_PORT}
+
+        ports:
+            - ${LAN_IP}:${EXPOSED_PORT}:${PORT}
+        volumes:
+            - ${HOST_MACHINE_LOG_DIR}:${LOG_DIR}
+        networks:
+            - external
