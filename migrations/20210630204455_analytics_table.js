@@ -5,7 +5,7 @@ exports.up = function (knex) {
         table.bigInteger('conversa_id').notNullable().references('conversa.id');
         table.integer('step_code_id').notNullable().references('step_code.id');
         table.integer('previous_step_code_id').references('step_code.id');
-        table.enum('finished', ['DURING_DECISION_TREE', 'DURING_QUESTIONNAIRE', 'QUESTIONNAIRE_FINISHED', 'QUESTIONNAIRE_TIMEOUT'], { useNative: true, enumName: 'finished_type' });
+        table.enum('finished', ['DURING_DECISION_TREE', 'DURING_QUESTIONNAIRE', 'QUESTIONNAIRE_FINISHED', 'QUESTIONNAIRE_TIMEOUT', 'QUESTIONNAIRE_GAVE_UP', 'QUESTIONNAIRE_RETRY'], { useNative: true, enumName: 'finished_type' });
         table.integer('tag_code').notNullable().defaultTo(0);
         table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(knex.fn.now());
         table.timestamp('first_msg_tz', { useTz: true }).notNullable();
