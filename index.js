@@ -104,7 +104,7 @@ app.post('/analytics', async (req, res) => {
         step_code_id: step_code_id,
         previous_step_code_id: last_step_code_id,
         first_msg_tz: first_msg_tz,
-        finished: finished
+        state: finished
     }, 'id');
 
     res.status(200);
