@@ -9,6 +9,7 @@ exports.up = function (knex) {
         table.integer('tag_code').notNullable().defaultTo(0);
         table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(knex.fn.now());
         table.timestamp('first_msg_tz', { useTz: true }).notNullable();
+        table.timestamp('timeout_at', { useTz: true });
     });
 };
 
