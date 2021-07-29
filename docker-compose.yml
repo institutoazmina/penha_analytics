@@ -5,6 +5,7 @@ services:
     analytics_server:
         build: .
         container_name: azmina-chatbot-analytics
+        restart: unless-stopped
         environment:
             PORT: ${PORT}
 
@@ -16,7 +17,5 @@ services:
 
         ports:
             - ${LAN_IP}:${EXPOSED_PORT}:${PORT}
-        volumes:
-            - ${HOST_MACHINE_LOG_DIR}:${LOG_DIR}
         networks:
             - external

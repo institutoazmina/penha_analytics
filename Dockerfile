@@ -5,7 +5,11 @@ COPY . /home/node/app/
 
 RUN npm install
 
+RUN npm install knex -g
+
 USER node
+
+RUN knex migrate:latest
 CMD "npm" "start"
 
 
