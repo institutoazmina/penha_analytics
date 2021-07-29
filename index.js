@@ -112,6 +112,18 @@ app.post('/analytics', async (req, res) => {
     res.json({ id: analytics[0] })
 });
 
+app.post('/timeout', async (req, res) => {
+    const { conversa_id, analytics_id } = req.body;
+
+    const analytics = await knex('analytics').where({ id: analytics_id }).update({
+        state: 'QUESTIONNAIRE_TIMEOUT',
+        timeout_at: "NOW()"
+    }, 'id');
+
+    res.status(200);
+    res.json({ id: analytics[0] });
+})
+
 
 app.listen(port, () => {
     console.log(`API listening at http://localhost:${port}`)
