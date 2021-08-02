@@ -9,7 +9,8 @@ RUN npm install knex -g
 
 USER node
 
-RUN knex migrate:latest
+# RUN knex migrate:latest
+
 CMD "npm" "start"
 
 
