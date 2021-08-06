@@ -5,6 +5,8 @@ networks:
         name: twitter_chatbot
 
     database:
+        driver: bridge
+        name: twitter_analytics_db_network
 
 services:
     db:
