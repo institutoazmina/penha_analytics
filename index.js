@@ -113,11 +113,11 @@ app.post('/analytics', async (req, res) => {
 });
 
 app.post('/timeout', async (req, res) => {
-    const { conversa_id, analytics_id } = req.body;
+    const { analytics_id, timeout_epoch } = req.body;
 
     const analytics = await knex('analytics').where({ id: analytics_id }).update({
         state: 'QUESTIONNAIRE_TIMEOUT',
-        timeout_at: "NOW()"
+        timeout_at: knex.raw('TO_TIMESTAMP(?)', [timeout_epoch])
     }, 'id');
 
     res.status(200);
