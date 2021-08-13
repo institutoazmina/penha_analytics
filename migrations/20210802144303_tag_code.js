@@ -5,10 +5,10 @@ exports.up = function (knex) {
         table.string('label').notNullable();
     }).then(function () {
         return knex('tag_code').insert([
-            { label: 'Sem categoria' },
-            { label: 'Em busca de info. sobre relacionamento abusivo para ela' },
-            { label: 'Em busca de info. sobre relacionamento abusivo para outra pessoa' },
-            { label: 'Está em relacionamento abusivo' }
+            { id: 0, label: 'Sem categoria' },
+            { id: 1, label: 'Em busca de info. sobre relacionamento abusivo para ela' },
+            { id: 2, label: 'Em busca de info. sobre relacionamento abusivo para outra pessoa' },
+            { id: 3, label: 'Está em relacionamento abusivo' }
         ])
     });
 };
